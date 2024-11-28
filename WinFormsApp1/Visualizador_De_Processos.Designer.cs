@@ -1,6 +1,6 @@
-﻿namespace WinFormsApp1
+﻿namespace Sistema_Operacional
 {
-    partial class Form1
+    partial class Visualizador_De_Processos
     {
         /// <summary>
         ///  Required designer variable.
@@ -31,12 +31,12 @@
             treeView1 = new TreeView();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel5 = new TableLayoutPanel();
-            button8 = new Button();
+            maskedTextBox_PID = new MaskedTextBox();
             button9 = new Button();
             treeView2 = new TreeView();
             tableLayoutPanel2 = new TableLayoutPanel();
-            maskedTextBox1 = new MaskedTextBox();
             button3 = new Button();
+            button1 = new Button();
             webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             webView22 = new Microsoft.Web.WebView2.WinForms.WebView2();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -88,7 +88,7 @@
             tableLayoutPanel5.ColumnCount = 2;
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Controls.Add(button8, 1, 0);
+            tableLayoutPanel5.Controls.Add(maskedTextBox_PID, 0, 0);
             tableLayoutPanel5.Controls.Add(button9, 0, 0);
             tableLayoutPanel5.Dock = DockStyle.Fill;
             tableLayoutPanel5.Location = new Point(3, 413);
@@ -99,16 +99,14 @@
             tableLayoutPanel5.Size = new Size(394, 34);
             tableLayoutPanel5.TabIndex = 13;
             // 
-            // button8
+            // maskedTextBox_PID
             // 
-            button8.Dock = DockStyle.Fill;
-            button8.Location = new Point(200, 3);
-            button8.Name = "button8";
-            button8.Size = new Size(191, 28);
-            button8.TabIndex = 3;
-            button8.Text = "Gerar Processo";
-            button8.UseVisualStyleBackColor = true;
-            button8.Click += Button2_Click;
+            maskedTextBox_PID.Dock = DockStyle.Fill;
+            maskedTextBox_PID.Location = new Point(200, 3);
+            maskedTextBox_PID.Mask = "0000000";
+            maskedTextBox_PID.Name = "maskedTextBox_PID";
+            maskedTextBox_PID.Size = new Size(191, 23);
+            maskedTextBox_PID.TabIndex = 5;
             // 
             // button9
             // 
@@ -134,8 +132,8 @@
             tableLayoutPanel2.ColumnCount = 2;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Controls.Add(maskedTextBox1, 1, 0);
             tableLayoutPanel2.Controls.Add(button3, 0, 0);
+            tableLayoutPanel2.Controls.Add(button1, 1, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(403, 413);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -144,15 +142,6 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new Size(394, 34);
             tableLayoutPanel2.TabIndex = 8;
-            // 
-            // maskedTextBox1
-            // 
-            maskedTextBox1.Dock = DockStyle.Fill;
-            maskedTextBox1.Location = new Point(200, 3);
-            maskedTextBox1.Mask = "0000000";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(191, 23);
-            maskedTextBox1.TabIndex = 4;
             // 
             // button3
             // 
@@ -164,6 +153,17 @@
             button3.Text = "Parar Atualização";
             button3.UseVisualStyleBackColor = true;
             button3.Click += Button3_Click;
+            // 
+            // button1
+            // 
+            button1.Dock = DockStyle.Fill;
+            button1.Location = new Point(200, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(191, 28);
+            button1.TabIndex = 6;
+            button1.Text = "Atualizar";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // webView21
             // 
@@ -253,18 +253,19 @@
             button7.Text = "Arvore de um Processo";
             button7.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // Visualizador_De_Processos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
-            Name = "Form1";
+            Name = "Visualizador_De_Processos";
             Text = "Form1";
+            Load += Form1_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
+            tableLayoutPanel5.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             ((System.ComponentModel.ISupportInitialize)webView22).EndInit();
             tableLayoutPanel3.ResumeLayout(false);
@@ -278,7 +279,6 @@
         private TreeView treeView2;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
         private TableLayoutPanel tableLayoutPanel2;
-        private MaskedTextBox maskedTextBox1;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView22;
         private TableLayoutPanel tableLayoutPanel4;
         private Button button6;
@@ -288,7 +288,8 @@
         private Button button5;
         private Button button3;
         private TableLayoutPanel tableLayoutPanel5;
-        private Button button8;
         private Button button9;
+        private MaskedTextBox maskedTextBox_PID;
+        private Button button1;
     }
 }

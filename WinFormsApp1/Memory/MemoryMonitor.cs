@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Management;
 
-namespace WinFormsApp1
+namespace Sistema_Operacional
 {
     public class MemoryMonitor
     {

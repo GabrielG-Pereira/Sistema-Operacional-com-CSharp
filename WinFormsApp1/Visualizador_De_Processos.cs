@@ -1,38 +1,44 @@
-using System;
 using System.Diagnostics;
-using WinFormsApp1.Processos;
+using Sistema_Operacional.Processos;
 
-namespace WinFormsApp1
+namespace Sistema_Operacional
 {
-    public partial class Form1 : Form
+    public partial class Visualizador_De_Processos : Form
     {
-        public Form1()
+        public Visualizador_De_Processos()
         {
             InitializeComponent();
             Task.Run(AtualizarProcessos);
-            
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            ProcessStartInfo startInfo = new();
-            startInfo.FileName = "notepad";
-            Process process1 = new()
+            try
             {
-                StartInfo = startInfo
-            };
-            Process process = process1;
-            process.Start();
+                // Obter o processo pelo PID
+                Process process = Process.GetProcessById(Convert.ToInt32(maskedTextBox_PID.Text));
+
+                // Coletar as informações do processo
+                MessageBox.Show($"Process Name: {process.ProcessName}\n" +
+                                        $"ID: {process.Id}\n" +
+                                        $"Priority: {process.BasePriority}\n" +
+                                        $"Start Time: {process.StartTime}\n" +
+                                        $"CPU Time: {process.TotalProcessorTime}\n" +
+                                        $"Threads: {process.Threads.Count}\n" +
+                                        $"Memory Usage: {process.WorkingSet64 / (1024.0 * 1024.0):0.00} MB\n" +
+                                        $"Virtual Memory: {process.VirtualMemorySize64 / (1024.0 * 1024.0):0.00} MB\n" +
+                                        $"Path: {process.MainModule?.FileName}", "Dados do Processo");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao obter informações do processo: {ex.Message}", "Erro");
+            }
         }
 
         private void Button3_Click(object sender, EventArgs e) => cancelarLeituras = true;
-        
-        
+
+
         // Leitura de processos
         bool cancelarLeituras = false;
         private async Task AtualizarProcessos()
@@ -43,13 +49,13 @@ namespace WinFormsApp1
             {
                 Process[] processos = Process.GetProcesses();
                 List<Processo> tasks = cache.GetProcessosAsync(processos).Result;
-                List<Task> taskss = 
+                List<Task> taskss =
                     [
                         LoadProcess(tasks, currentProcessId, processos),
                         LoadMemory(tasks, currentProcessId)
                     ];
                 await Task.WhenAll(taskss);
-                await Task.Delay(5000);
+                await Task.Delay(60000);
             }
         }
 
@@ -184,5 +190,23 @@ namespace WinFormsApp1
             return memoriaTotal;
         }
 
+        private async void button1_Click_1(object sender, EventArgs e)
+        {
+            var cache = new GetProcessInfo();
+            int currentProcessId = Environment.ProcessId;
+            Process[] processos = Process.GetProcesses();
+            List<Processo> tasks = cache.GetProcessosAsync(processos).Result;
+            List<Task> taskss =
+                [
+                    LoadProcess(tasks, currentProcessId, processos),
+                    LoadMemory(tasks, currentProcessId)
+                ];
+            await Task.WhenAll(taskss);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

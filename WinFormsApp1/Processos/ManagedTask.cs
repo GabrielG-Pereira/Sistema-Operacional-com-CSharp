@@ -1,7 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Diagnostics;
 
-namespace WinFormsApp1
+namespace Sistema_Operacional
 {
     public class Scheduler
     {

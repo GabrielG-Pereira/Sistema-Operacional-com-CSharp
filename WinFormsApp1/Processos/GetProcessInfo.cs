@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace WinFormsApp1.Processos
+namespace Sistema_Operacional.Processos
 {
     public class GetProcessInfo
     {

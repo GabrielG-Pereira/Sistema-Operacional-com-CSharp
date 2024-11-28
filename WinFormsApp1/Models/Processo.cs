@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace WinFormsApp1
+namespace Sistema_Operacional
 {
     public struct Processo
     {

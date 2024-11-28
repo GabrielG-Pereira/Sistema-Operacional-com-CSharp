@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp1
+﻿namespace Sistema_Operacional
 {
     public enum ProcessState
     {

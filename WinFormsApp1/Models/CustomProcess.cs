@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace WinFormsApp1
+namespace Sistema_Operacional
 {
     public class CustomProcess
     {

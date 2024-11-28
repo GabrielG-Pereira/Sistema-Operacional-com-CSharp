@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace WinFormsApp1.Processos
+namespace Sistema_Operacional.Processos
 {
     public class CancelProcess
     {
