@@ -203,6 +203,7 @@
             textBox_RAM.Dock = DockStyle.Fill;
             textBox_RAM.Location = new Point(545, 3);
             textBox_RAM.Name = "textBox_RAM";
+            textBox_RAM.ReadOnly = true;
             textBox_RAM.Size = new Size(206, 23);
             textBox_RAM.TabIndex = 9;
             // 
@@ -235,6 +236,7 @@
             textBox_MEMORIA.Dock = DockStyle.Fill;
             textBox_MEMORIA.Location = new Point(545, 3);
             textBox_MEMORIA.Name = "textBox_MEMORIA";
+            textBox_MEMORIA.ReadOnly = true;
             textBox_MEMORIA.Size = new Size(206, 23);
             textBox_MEMORIA.TabIndex = 9;
             // 

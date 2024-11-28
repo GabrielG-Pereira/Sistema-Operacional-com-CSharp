@@ -5,10 +5,17 @@ namespace Sistema_Operacional
 {
     public partial class Menu_Inicial : Form
     {
+
         public Menu_Inicial()
         {
             InitializeComponent();
+            BootData bootData = LoadBootDataFromJson();
+
+            scheduler = new Scheduler(bootData.CPUValue);
+            scheduler.StartFCFS();
         }
+
+        private Scheduler? scheduler;
 
         private void button_BootLoader_Click(object sender, EventArgs e)
         {
@@ -84,7 +91,8 @@ namespace Sistema_Operacional
 
         private void button_Remover_Processo_Click(object sender, EventArgs e)
         {
-
+            Gerenciador_De_Processos gerenciador_De_Processos = new Gerenciador_De_Processos(scheduler);
+            gerenciador_De_Processos.ShowDialog();
         }
 
         public static void SaveDataToJson(object data, string filePath = null)
